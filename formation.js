@@ -588,3 +588,82 @@ console.log(product);
 
 //Final Result: 5040
  
+//todo ==> do while loops
+// while loop check a condition before runs any code withing the loop
+//the do while will run  once before cheking condition 
+var myArray=[];
+var i=0;
+do{
+    myArray.push(i);
+    i++;
+}while (i<=10)
+console.log(myArray);
+//*                    ===== SUMMARY =====
+//*    WHILE: Check first, then run → Might not run at all
+//*    DO-WHILE: Run first, then check → Always runs at least once
+
+//todo exemple profile lookup
+var contacts = [
+    {
+        firstName: "John",
+        lastName: "Doe",
+        number: "555-1234",
+        likes: ["pizza", "gaming", "movies"]
+    },
+    {
+        firstName: "Sarah",
+        lastName: "Smith",
+        number: "555-5678",
+        likes: ["tacos", "music", "reading"]
+    },
+    {
+        firstName: "Mike",
+        lastName: "Johnson",
+        number: "555-9012",
+        likes: ["football", "coding", "coffee"]
+    },
+    {
+        firstName: "Emma",
+        lastName: "Williams",
+        number: "unknown",
+        likes: ["gaming", "tacos", "traveling"]
+    }
+];
+function lookUpProfile(name,prop){
+    for(var i=0 ;i<contacts.length;  i++){
+        if(contacts[i].firstName===name){
+            return contacts[i][prop] || "no such property";
+        }
+    }
+    return "No Such contact";
+}
+
+var data = lookUpProfile("Mike","likes");    
+console.log(data);
+//todo random Fraction 
+function randomFraction(){
+
+    return Math.random();
+}
+console.log(randomFraction());
+//todo generate random whole number
+var randomNumberBetween0and19 =Math.floor(Math.random()*20);
+//exemple 2
+function randomWholeNumber(){
+
+    return Math.floor(Math.random()*10);
+}
+//todo generate random whole numbers within a range
+function ourRandomRange(ourMin,ourMax){
+
+    return Math.floor(Math.random()*(ourMax-ourMin +1)) + ourMin;
+}
+ourRandomRange(1,9);
+//todo usei The parse Int Function 
+function convertToInteger(str){
+    return parseInt(str);
+}
+convertToInteger("56");
+convertToInteger("10011");  //function convertToInteger(str,2)
+//retrn binary code to integer 
+//todo use the conditionnal(Ternary) Operator
