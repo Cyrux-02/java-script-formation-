@@ -666,4 +666,66 @@ function convertToInteger(str){
 convertToInteger("56");
 convertToInteger("10011");  //function convertToInteger(str,2)
 //retrn binary code to integer 
-//todo use the conditionnal(Ternary) Operator
+//todo ==> Use the conditionnal (Ternary) Operator
+function checkEqual(a,b){
+    return a===b ? true:false;
+    return a===b;
+}
+checkEqual(1,2);
+//todo multiple ternary operator
+function checkSign(num){
+    return num>0?"positive ": num <0?"negative":"zero"
+}
+console.log(checkSign(0));
+//* difference between var and let
+//* var is globaly
+//* let is 
+//? block scope and function scope
+/* ========================================
+   VAR vs LET - Key Differences
+   ======================================== */
+
+// 1. SCOPE DIFFERENCE
+// -------------------
+// var = Function Scope (escapes blocks)
+// let = Block Scope (trapped in blocks)
+
+if (true) {
+    var x = 10;  // escapes the if block
+    let y = 20;  // trapped inside the if block
+}
+console.log(x);  // 10 - works!
+console.log(y);  // ERROR - y is not defined
+
+
+// 2. REDECLARING
+// --------------
+// var = CAN redeclare (dangerous!)
+// let = CANNOT redeclare (safe!)
+
+var name = "Alice";
+var name = "Bob";    // No error - name is now "Bob"
+
+let age = 25;
+let age = 30;        // ERROR - already declared
+
+
+// 3. LOOP PROBLEM
+// ---------------
+// var = shares same variable across loop
+// let = creates new variable for each iteration
+
+for (var i = 0; i < 3; i++) {
+    setTimeout(() => console.log(i), 1000);
+}
+// Prints: 3, 3, 3
+
+for (let j = 0; j < 3; j++) {
+    setTimeout(() => console.log(j), 1000);
+}
+// Prints: 0, 1, 2
+
+
+// RULE: Always use 'let' (or 'const') in modern JavaScript!
+// Only use 'var' when working with old code
+
