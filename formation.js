@@ -706,7 +706,7 @@ console.log(y);  // ERROR - y is not defined
 var name = "Alice";
 var name = "Bob";    // No error - name is now "Bob"
 
-let age = 25;
+//let age = 25;
 let age = 30;        // ERROR - already declared
 
 
@@ -729,3 +729,1587 @@ for (let j = 0; j < 3; j++) {
 // RULE: Always use 'let' (or 'const') in modern JavaScript!
 // Only use 'var' when working with old code
 
+
+//TODO: Declare a read -only variable with the const Keyword
+        /* ========================================
+   LET vs CONST - Complete Comparison
+   ======================================== */
+
+/* 
+   LET (Modern Way)
+   ----------------
+   - Block Scope (trapped in blocks)
+   - CAN be reassigned
+   - CANNOT be redeclared
+   - Does NOT need initialization
+*/
+
+// let example - block scope
+// if (true) {
+//     let y = 20;
+// }
+// console.log(y); // ERROR - trapped inside!
+
+// let example - can reassign
+// let age = 25;
+// age = 30; // Works - we can change the value
+
+// let example - cannot redeclare
+// let score = 100;
+// let score = 200; // ERROR - already declared
+
+// let example - no need to initialize
+// let name;
+// name = "Alice"; // Works
+
+
+/* 
+   CONST (Modern Way - Use Most Often!)
+   -------------------------------------
+   - Block Scope (trapped in blocks)
+   - CANNOT be reassigned
+   - CANNOT be redeclared
+   - MUST be initialized immediately
+*/
+
+// const example - cannot reassign
+// const PI = 3.14;
+// PI = 3.15; // ERROR - cannot change
+
+// const example - must initialize
+// const city; // ERROR - must give value immediately
+// const city = "Paris"; // Correct
+
+// const with objects - can change inside
+// const person = { name: "John" };
+// person.name = "Alice"; // Works - changing property
+// person = { name: "Bob" }; // ERROR - cannot reassign whole object
+
+// const with arrays - can change inside
+// const numbers = [1, 2, 3];
+// numbers.push(4); // Works - modifying array
+// numbers = [5, 6]; // ERROR - cannot reassign whole array
+
+
+/* ========================================
+   COMPARISON TABLE
+   ======================================== 
+   
+   Feature          | let      | const
+   -----------------|----------|----------
+   Scope            | Block    | Block
+   Can Reassign?    | YES      | NO
+   Can Redeclare?   | NO       | NO
+   Must Initialize? | NO       | YES
+   Use When?        | Value changes | Value stays same
+   
+*/
+
+
+/* ========================================
+   WHEN TO USE EACH?
+   ======================================== */
+
+// Use CONST by default (most common)
+// const userName = "Alice";
+// const MAX_USERS = 100;
+// const colors = ["red", "blue"];
+
+// Use LET only when you need to reassign
+// let counter = 0;
+// counter++;
+// 
+// let total = 100;
+// total = total + 50;
+
+
+/* ========================================
+   MEMORY TRICK
+   ======================================== */
+
+// let = "I might change this value later"
+// const = "This value stays the same"
+
+
+/* ========================================
+   BEST PRACTICE RULE
+   ======================================== */
+
+// 1. Start with CONST
+// 2. Change to LET only if you need to reassign
+// 3. Both are block-scoped and safe to use
+
+// If we have for exemple :
+function freezeObj(){
+    "use strict"
+    const MATH_CONSTANTS={
+        PI:3.14
+ }; //if we want to freeze this variable we use object.freeze
+Object.freeze(MATH_CONSTANTS);
+}
+const PI =  freezeObj()
+//TODO use arrow Functions  to write consise anonymous Functions
+    var magic=function(){   //! ==> it's an anoonymous function we can converted to an errow function
+        return new Date();
+    };
+    //*it beomes :
+    const magicc = () => new Date();
+
+    //todo write arrow functions with parameters
+    //? what are arrow functions were and why use them
+
+    //*use spred operator
+    // arr2=[...arr1]; why using the 3 points before arr1
+    // Destructuring Assignment
+
+    /* ========================================
+   DESTRUCTURING ASSIGNMENT
+   ======================================== */
+
+/* 
+   What is Destructuring?
+   ----------------------
+   A way to "unpack" values from arrays or objects
+   into separate variables in one line
+   Like opening a box and taking out specific items
+*/
+
+
+/* ========================================
+   ARRAY DESTRUCTURING
+   ======================================== */
+
+// WITHOUT Destructuring (old way)
+// const colors = ["red", "green", "blue"];
+// const color1 = colors[0]; // "red"
+// const color2 = colors[1]; // "green"
+// const color3 = colors[2]; // "blue"
+
+// WITH Destructuring (modern way - much cleaner!)
+// const colors = ["red", "green", "blue"];
+// const [color1, color2, color3] = colors;
+// console.log(color1); // "red"
+// console.log(color2); // "green"
+// console.log(color3); // "blue"
+
+
+// Skipping elements
+// const numbers = [1, 2, 3, 4, 5];
+// const [first, , third] = numbers; // skip second element
+// console.log(first);  // 1
+// console.log(third);  // 3
+
+// Getting rest of elements with spread operator
+// const numbers = [1, 2, 3, 4, 5];
+// const [first, second, ...rest] = numbers;
+// console.log(first);  // 1
+// console.log(second); // 2
+// console.log(rest);   // [3, 4, 5]
+
+// Default values
+// const colors = ["red"];
+// const [first, second = "blue"] = colors;
+// console.log(first);  // "red"
+// console.log(second); // "blue" (default value)
+
+// Swapping variables (cool trick!)
+// let a = 1;
+// let b = 2;
+// [a, b] = [b, a]; // swap values
+// console.log(a); // 2
+// console.log(b); // 1
+
+
+/* ========================================
+   OBJECT DESTRUCTURING
+   ======================================== */
+
+// WITHOUT Destructuring (old way)
+// const person = { name: "Alice", age: 25, city: "Paris" };
+// const name = person.name;
+// const age = person.age;
+// const city = person.city;
+
+// WITH Destructuring (modern way - cleaner!)
+// const person = { name: "Alice", age: 25, city: "Paris" };
+// const { name, age, city } = person;
+// console.log(name); // "Alice"
+// console.log(age);  // 25
+// console.log(city); // "Paris"
+
+/* 
+   IMPORTANT: Variable names must match property names!
+*/
+// const person = { name: "Alice", age: 25 };
+// const { name, age } = person; // Works - names match
+// const { firstName, age } = person; // firstName = undefined (no match!)
+
+
+// Renaming variables while destructuring
+// const person = { name: "Alice", age: 25 };
+// const { name: firstName, age: userAge } = person;
+// console.log(firstName); // "Alice"
+// console.log(userAge);   // 25
+// console.log(name);      // ERROR - name doesn't exist
+
+// Default values
+// const person = { name: "Alice" };
+// const { name, age = 30 } = person;
+// console.log(name); // "Alice"
+// console.log(age);  // 30 (default value)
+
+// Nested destructuring
+// const person = {
+//     name: "Alice",
+//     address: {
+//         city: "Paris",
+//         country: "France"
+//     }
+// };
+// const { name, address: { city, country } } = person;
+// console.log(city);    // "Paris"
+// console.log(country); // "France"
+
+// Getting rest of properties
+// const person = { name: "Alice", age: 25, city: "Paris", job: "Developer" };
+// const { name, age, ...others } = person;
+// console.log(name);   // "Alice"
+// console.log(age);    // 25
+// console.log(others); // { city: "Paris", job: "Developer" }
+
+
+/* ========================================
+   WHY USE DESTRUCTURING?
+   ======================================== */
+
+/* 
+   Benefits:
+   ---------
+   1. Less code to write
+   2. Cleaner and easier to read
+   3. No need to repeat object/array names
+   4. Can set default values easily
+   5. Common in modern JavaScript (React, Node.js, etc.)
+*/
+
+
+/* ========================================
+   COMMON USE CASES
+   ======================================== */
+
+// 1. Function parameters (very common!)
+// Instead of this:
+// function greet(person) {
+//     console.log(`Hello ${person.name}, you are ${person.age} years old`);
+// }
+
+// Do this (cleaner!):
+// function greet({ name, age }) {
+//     console.log(`Hello ${name}, you are ${age} years old`);
+// }
+// greet({ name: "Alice", age: 25 });
+
+
+// 2. Working with function returns
+// function getUser() {
+//     return { name: "Alice", age: 25, city: "Paris" };
+// }
+// const { name, age } = getUser(); // Extract only what you need
+
+
+// 3. Working with API responses
+// fetch('api/user')
+//     .then(response => response.json())
+//     .then(({ name, email, id }) => {
+//         // Only extract what you need from the response
+//         console.log(name, email, id);
+//     });
+
+
+// 4. Importing specific functions from modules
+// import { useState, useEffect } from 'react'; // destructuring!
+
+
+/* ========================================
+   COMPARISON: Before vs After
+   ======================================== */
+
+// BEFORE Destructuring (repetitive and long)
+// const user = { name: "Alice", age: 25, email: "alice@email.com" };
+// const name = user.name;
+// const age = user.age;
+// const email = user.email;
+// console.log(name, age, email);
+
+// AFTER Destructuring (clean and short)
+// const user = { name: "Alice", age: 25, email: "alice@email.com" };
+// const { name, age, email } = user;
+// console.log(name, age, email);
+
+
+/* ========================================
+   KEY POINTS TO REMEMBER
+   ======================================== */
+
+// Array Destructuring:
+// - Uses square brackets []
+// - Order matters (position-based)
+// - const [a, b, c] = array;
+
+// Object Destructuring:
+// - Uses curly braces {}
+// - Variable names must match property names
+// - Order doesn't matter
+// - const { name, age } = object;
+
+// Both can have:
+// - Default values
+// - Rest operator (...)
+// - Nested destructuring
+
+
+/* ========================================
+   MEMORY TRICK
+   ======================================== */
+
+// Destructuring = Unpacking a suitcase
+// - Array destructuring: Take items in order [1, 2, 3]
+// - Object destructuring: Take specific labeled items {name, age}
+// - You choose what to unpack, leave the rest packed
+
+
+/* ========================================
+   DESTRUCTURING WITH NESTED OBJECTS
+   ======================================== */
+
+/* 
+   What is a Nested Object?
+   ------------------------
+   An object that contains another object inside it
+   Like a box inside a box
+*/
+
+// Example of nested object:
+// const person = {
+//     name: "Alice",
+//     age: 25,
+//     address: {              // nested object!
+//         city: "Paris",
+//         country: "France",
+//         zipCode: "75001"
+//     }
+// };
+
+
+/* ========================================
+   METHOD 1: Basic Nested Destructuring
+   ======================================== */
+
+// WITHOUT Destructuring (old way - long!)
+// const person = {
+//     name: "Alice",
+//     address: {
+//         city: "Paris",
+//         country: "France"
+//     }
+// };
+// const name = person.name;
+// const city = person.address.city;
+// const country = person.address.country;
+
+
+// WITH Nested Destructuring (modern way - clean!)
+// const person = {
+//     name: "Alice",
+//     address: {
+//         city: "Paris",
+//         country: "France"
+//     }
+// };
+// const { name, address: { city, country } } = person;
+// console.log(name);    // "Alice"
+// console.log(city);    // "Paris"
+// console.log(country); // "France"
+
+/* 
+   IMPORTANT: After destructuring like this,
+   'address' variable does NOT exist!
+   Only 'city' and 'country' exist.
+*/
+
+
+/* ========================================
+   METHOD 2: Get Both Parent and Children
+   ======================================== */
+
+// If you want BOTH the address object AND its properties:
+// const person = {
+//     name: "Alice",
+//     address: {
+//         city: "Paris",
+//         country: "France"
+//     }
+// };
+
+// Destructure in TWO steps:
+// const { name, address } = person;
+// const { city, country } = address;
+// console.log(name);    // "Alice"
+// console.log(address); // { city: "Paris", country: "France" }
+// console.log(city);    // "Paris"
+// console.log(country); // "France"
+
+// OR do it all in one line:
+// const { 
+//     name, 
+//     address,
+//     address: { city, country } 
+// } = person;
+// Now you have: name, address, city, country all available
+
+
+/* ========================================
+   METHOD 3: Deep Nesting (3+ Levels)
+   ======================================== */
+
+// const user = {
+//     id: 1,
+//     name: "Alice",
+//     location: {
+//         address: {
+//             street: "Main St",
+//             city: "Paris",
+//             coordinates: {
+//                 lat: 48.8566,
+//                 lng: 2.3522
+//             }
+//         }
+//     }
+// };
+
+// Destructuring deep nested objects:
+// const {
+//     name,
+//     location: {
+//         address: {
+//             city,
+//             coordinates: { lat, lng }
+//         }
+//     }
+// } = user;
+
+// console.log(name); // "Alice"
+// console.log(city); // "Paris"
+// console.log(lat);  // 48.8566
+// console.log(lng);  // 2.3522
+
+
+/* ========================================
+   METHOD 4: With Default Values
+   ======================================== */
+
+// If nested property might not exist, use defaults:
+// const person = {
+//     name: "Alice",
+//     address: {
+//         city: "Paris"
+//         // country is missing!
+//     }
+// };
+
+// const { 
+//     name, 
+//     address: { 
+//         city, 
+//         country = "Unknown"  // default value
+//     } 
+// } = person;
+
+// console.log(name);    // "Alice"
+// console.log(city);    // "Paris"
+// console.log(country); // "Unknown" (default used)
+
+
+/* ========================================
+   METHOD 5: Renaming Nested Properties
+   ======================================== */
+
+// Rename variables while destructuring:
+// const person = {
+//     name: "Alice",
+//     address: {
+//         city: "Paris",
+//         country: "France"
+//     }
+// };
+
+// const { 
+//     name: userName, 
+//     address: { 
+//         city: userCity, 
+//         country: userCountry 
+//     } 
+// } = person;
+
+// console.log(userName);    // "Alice"
+// console.log(userCity);    // "Paris"
+// console.log(userCountry); // "France"
+
+
+/* ========================================
+   REAL WORLD EXAMPLES
+   ======================================== */
+
+// Example 1: User Profile
+// const profile = {
+//     username: "alice123",
+//     info: {
+//         fullName: "Alice Smith",
+//         contact: {
+//             email: "alice@email.com",
+//             phone: "123-456-7890"
+//         }
+//     }
+// };
+
+// const {
+//     username,
+//     info: {
+//         fullName,
+//         contact: { email, phone }
+//     }
+// } = profile;
+
+// console.log(username); // "alice123"
+// console.log(fullName); // "Alice Smith"
+// console.log(email);    // "alice@email.com"
+// console.log(phone);    // "123-456-7890"
+
+
+// Example 2: API Response (very common!)
+// const apiResponse = {
+//     status: "success",
+//     data: {
+//         user: {
+//             id: 101,
+//             name: "Alice",
+//             settings: {
+//                 theme: "dark",
+//                 notifications: true
+//             }
+//         }
+//     }
+// };
+
+// const {
+//     status,
+//     data: {
+//         user: {
+//             id,
+//             name,
+//             settings: { theme, notifications }
+//         }
+//     }
+// } = apiResponse;
+
+// console.log(status);        // "success"
+// console.log(id);            // 101
+// console.log(name);          // "Alice"
+// console.log(theme);         // "dark"
+// console.log(notifications); // true
+
+
+// Example 3: Function Parameters (super useful!)
+// Instead of this:
+// function displayUser(user) {
+//     console.log(user.name);
+//     console.log(user.address.city);
+//     console.log(user.address.country);
+// }
+
+// Do this (much cleaner!):
+// function displayUser({ name, address: { city, country } }) {
+//     console.log(name);
+//     console.log(city);
+//     console.log(country);
+// }
+
+// const user = {
+//     name: "Alice",
+//     address: { city: "Paris", country: "France" }
+// };
+// displayUser(user);
+
+
+/* ========================================
+   COMMON MISTAKES TO AVOID
+   ======================================== */
+
+// Mistake 1: Trying to use intermediate object
+// const person = {
+//     name: "Alice",
+//     address: { city: "Paris" }
+// };
+// const { name, address: { city } } = person;
+// console.log(address); // ERROR! address doesn't exist
+// Only 'name' and 'city' exist
+
+// Mistake 2: Destructuring undefined nested object
+// const person = { name: "Alice" }; // no address property!
+// const { name, address: { city } } = person; // ERROR!
+// Fix: Use default value
+// const { name, address: { city } = {} } = person; // Works
+
+
+/* ========================================
+   VISUAL EXPLANATION
+   ======================================== */
+
+/* 
+   Think of it like opening nested boxes:
+   
+   person = {
+       name: "Alice",           ← Box 1: direct property
+       address: {               ← Box 2: nested box
+           city: "Paris",       ← Box 2 contents
+           country: "France"    ← Box 2 contents
+       }
+   }
+   
+   Destructuring:
+   { name, address: { city, country } }
+   
+   Steps:
+   1. Open main box (person)
+   2. Take out 'name'
+   3. Open 'address' box
+   4. Take out 'city' and 'country'
+   5. Throw away the 'address' box (don't keep it)
+*/
+
+
+/* ========================================
+   KEY POINTS TO REMEMBER
+   ======================================== */
+
+// 1. Use colon (:) to go deeper into nested objects
+//    { address: { city } }
+
+// 2. After destructuring, intermediate objects don't exist
+//    { address: { city } } → only 'city' exists, NOT 'address'
+
+// 3. To keep both parent and children, destructure twice:
+//    { address, address: { city } }
+
+// 4. Always use default values for optional nested properties
+//    { address: { city = "Unknown" } = {} }
+
+// 5. Great for function parameters and API responses
+
+
+/* ========================================
+   PRACTICE EXERCISE
+   ======================================== */
+
+// Try destructuring this yourself:
+// const company = {
+//     name: "TechCorp",
+//     ceo: {
+//         firstName: "John",
+//         lastName: "Doe",
+//         contact: {
+//             email: "john@techcorp.com",
+//             phone: "555-0100"
+//         }
+//     },
+//     location: {
+//         headquarters: {
+//             city: "San Francisco",
+//             state: "CA"
+//         }
+//     }
+// };
+
+// Goal: Extract companyName, ceoFirstName, ceoEmail, and headquartersCity
+// Try it yourself, then check below!
+
+// Solution:
+// const {
+//     name: companyName,
+//     ceo: {
+//         firstName: ceoFirstName,
+//         contact: { email: ceoEmail }
+//     },
+//     location: {
+//         headquarters: { city: headquartersCity }
+//     }
+// } = company;
+
+
+
+/* ========================================
+   JAVASCRIPT COMPLETE GUIDE - ALL YOUR QUESTIONS
+   ======================================== */
+
+
+/* ========================================
+   1. DESTRUCTURING WITH REST OPERATOR & FUNCTION PARAMETERS
+   ======================================== */
+
+/* 
+   Part A: Destructuring Arrays with Rest Operator
+   ------------------------------------------------
+*/
+
+// Basic array destructuring
+// const numbers = [1, 2, 3, 4, 5];
+// const [first, second] = numbers;
+// console.log(first);  // 1
+// console.log(second); // 2
+
+// Using REST operator (...) to get remaining elements
+// const numbers = [1, 2, 3, 4, 5];
+// const [first, second, ...rest] = numbers;
+// console.log(first);  // 1
+// console.log(second); // 2
+// console.log(rest);   // [3, 4, 5] - all remaining elements
+
+// Skip elements and use rest
+// const colors = ["red", "green", "blue", "yellow", "purple"];
+// const [primary, , tertiary, ...others] = colors;
+// console.log(primary);  // "red"
+// console.log(tertiary); // "blue"
+// console.log(others);   // ["yellow", "purple"]
+
+
+/* 
+   Part B: Destructuring Objects with Rest Operator
+   -------------------------------------------------
+*/
+
+// Basic object destructuring with rest
+// const person = { name: "Alice", age: 25, city: "Paris", job: "Developer" };
+// const { name, age, ...rest } = person;
+// console.log(name); // "Alice"
+// console.log(age);  // 25
+// console.log(rest); // { city: "Paris", job: "Developer" }
+
+
+/* 
+   Part C: Using Destructuring in Function Parameters
+   ---------------------------------------------------
+   This is VERY COMMON in modern JavaScript!
+*/
+
+// Example 1: Destructuring object in function parameters
+// Instead of this (old way):
+// function greet(person) {
+//     console.log(`Hello ${person.name}, you are ${person.age} years old`);
+// }
+
+// Do this (modern way - much cleaner!):
+// function greet({ name, age }) {
+//     console.log(`Hello ${name}, you are ${age} years old`);
+// }
+// const user = { name: "Alice", age: 25, city: "Paris" };
+// greet(user); // "Hello Alice, you are 25 years old"
+
+
+// Example 2: With default values
+// function createUser({ name, age = 18, country = "USA" }) {
+//     return { name, age, country };
+// }
+// console.log(createUser({ name: "Bob" })); 
+// Result: { name: "Bob", age: 18, country: "USA" }
+
+
+// Example 3: With rest operator in function
+// function displayUser({ name, age, ...otherInfo }) {
+//     console.log(`Name: ${name}`);
+//     console.log(`Age: ${age}`);
+//     console.log("Other info:", otherInfo);
+// }
+// displayUser({ name: "Alice", age: 25, city: "Paris", job: "Developer" });
+// Prints:
+// Name: Alice
+// Age: 25
+// Other info: { city: "Paris", job: "Developer" }
+
+
+// Example 4: Nested destructuring in function parameters
+// function displayAddress({ name, address: { city, country } }) {
+//     console.log(`${name} lives in ${city}, ${country}`);
+// }
+// const person = {
+//     name: "Alice",
+//     address: { city: "Paris", country: "France" }
+// };
+// displayAddress(person); // "Alice lives in Paris, France"
+
+
+/* ========================================
+   2. TEMPLATE LITERALS (TEMPLATE STRINGS)
+   ======================================== */
+
+/* 
+   What are Template Literals?
+   ----------------------------
+   A modern way to create strings using backticks ``
+   Can include variables and expressions directly
+   Can span multiple lines easily
+*/
+
+// OLD WAY: String concatenation (ugly!)
+// const name = "Alice";
+// const age = 25;
+// const message = "Hello, my name is " + name + " and I am " + age + " years old.";
+// console.log(message);
+
+// NEW WAY: Template Literals (beautiful!)
+// const name = "Alice";
+// const age = 25;
+// const message = `Hello, my name is ${name} and I am ${age} years old.`;
+// console.log(message);
+
+/* 
+   Syntax: Use backticks `` and ${} for variables/expressions
+*/
+
+// Example 1: Simple variables
+// const firstName = "Alice";
+// const lastName = "Smith";
+// const fullName = `${firstName} ${lastName}`;
+// console.log(fullName); // "Alice Smith"
+
+// Example 2: Expressions inside ${}
+// const a = 5;
+// const b = 10;
+// console.log(`The sum is: ${a + b}`); // "The sum is: 15"
+// console.log(`Double of a is: ${a * 2}`); // "Double of a is: 10"
+
+// Example 3: Multi-line strings (no \n needed!)
+// const message = `
+//     Hello,
+//     This is a multi-line
+//     string using template literals.
+//     Very easy!
+// `;
+// console.log(message);
+
+// Example 4: Calling functions inside ${}
+// function getDiscount(price) {
+//     return price * 0.1;
+// }
+// const price = 100;
+// console.log(`Price: $${price}, Discount: $${getDiscount(price)}`);
+// Output: "Price: $100, Discount: $10"
+
+// Example 5: Nested template literals
+// const user = { name: "Alice", age: 25 };
+// const isAdult = user.age >= 18;
+// const status = `${user.name} is ${isAdult ? 'an adult' : 'a minor'}`;
+// console.log(status); // "Alice is an adult"
+
+// Example 6: HTML templates (very common in web development!)
+// const name = "Alice";
+// const age = 25;
+// const html = `
+//     <div class="user-card">
+//         <h2>${name}</h2>
+//         <p>Age: ${age}</p>
+//     </div>
+// `;
+
+
+/* ========================================
+   3. CONCISE OBJECT LITERAL DECLARATIONS
+   ======================================== */
+
+/* 
+   What is Concise Object Literal?
+   --------------------------------
+   A shorter way to write object properties and methods
+   When variable name = property name, you can write it once!
+*/
+
+// OLD WAY (repetitive):
+// const name = "Alice";
+// const age = 25;
+// const city = "Paris";
+// const person = {
+//     name: name,      // repetitive!
+//     age: age,        // repetitive!
+//     city: city       // repetitive!
+// };
+
+// NEW WAY (concise - ES6):
+// const name = "Alice";
+// const age = 25;
+// const city = "Paris";
+// const person = { name, age, city }; // Much shorter!
+// console.log(person); // { name: "Alice", age: 25, city: "Paris" }
+
+
+/* 
+   Concise Method Syntax
+   ----------------------
+*/
+
+// OLD WAY:
+// const person = {
+//     name: "Alice",
+//     greet: function() {
+//         console.log(`Hello, I'm ${this.name}`);
+//     }
+// };
+
+// NEW WAY (concise methods):
+// const person = {
+//     name: "Alice",
+//     greet() {  // No 'function' keyword needed!
+//         console.log(`Hello, I'm ${this.name}`);
+//     }
+// };
+// person.greet(); // "Hello, I'm Alice"
+
+
+/* 
+   Computed Property Names
+   -----------------------
+*/
+
+// Dynamic property names using []
+// const propName = "age";
+// const person = {
+//     name: "Alice",
+//     [propName]: 25,  // property name from variable
+//     [`user_${propName}`]: 25  // can use expressions!
+// };
+// console.log(person); // { name: "Alice", age: 25, user_age: 25 }
+
+
+// Complete example combining all:
+// const firstName = "Alice";
+// const lastName = "Smith";
+// const age = 25;
+
+// const user = {
+//     firstName,    // concise property
+//     lastName,     // concise property
+//     age,          // concise property
+//     fullName() {  // concise method
+//         return `${this.firstName} ${this.lastName}`;
+//     },
+//     greet() {     // concise method
+//         return `Hello, I'm ${this.fullName()}`;
+//     }
+// };
+
+
+/* ========================================
+   4. CLASS SYNTAX - CONSTRUCTOR FUNCTION
+   ======================================== */
+
+/* 
+   What is a Class?
+   ----------------
+   A blueprint for creating objects
+   Modern way to create objects with constructor (ES6)
+*/
+
+// Basic Class Structure
+// class Person {
+//     // Constructor - runs when you create new object
+//     constructor(name, age) {
+//         this.name = name;  // this = the new object being created
+//         this.age = age;
+//     }
+    
+//     // Method (function inside class)
+//     greet() {
+//         return `Hello, my name is ${this.name}`;
+//     }
+    
+//     // Another method
+//     getAge() {
+//         return this.age;
+//     }
+// }
+
+// Creating objects from class (instances)
+// const person1 = new Person("Alice", 25);
+// const person2 = new Person("Bob", 30);
+
+// console.log(person1.name);      // "Alice"
+// console.log(person1.greet());   // "Hello, my name is Alice"
+// console.log(person2.greet());   // "Hello, my name is Bob"
+
+
+// Example 2: Class with more features
+// class Car {
+//     constructor(brand, model, year) {
+//         this.brand = brand;
+//         this.model = model;
+//         this.year = year;
+//         this.speed = 0;  // default value
+//     }
+    
+//     // Method to accelerate
+//     accelerate(amount) {
+//         this.speed += amount;
+//         return `${this.brand} is now going ${this.speed} km/h`;
+//     }
+    
+//     // Method to brake
+//     brake(amount) {
+//         this.speed -= amount;
+//         if (this.speed < 0) this.speed = 0;
+//         return `${this.brand} slowed down to ${this.speed} km/h`;
+//     }
+    
+//     // Method to get info
+//     getInfo() {
+//         return `${this.year} ${this.brand} ${this.model}`;
+//     }
+// }
+
+// const myCar = new Car("Toyota", "Corolla", 2020);
+// console.log(myCar.getInfo());        // "2020 Toyota Corolla"
+// console.log(myCar.accelerate(50));   // "Toyota is now going 50 km/h"
+// console.log(myCar.accelerate(30));   // "Toyota is now going 80 km/h"
+// console.log(myCar.brake(20));        // "Toyota slowed down to 60 km/h"
+
+
+// Example 3: Class Inheritance (extending classes)
+// class Animal {
+//     constructor(name) {
+//         this.name = name;
+//     }
+    
+//     speak() {
+//         return `${this.name} makes a sound`;
+//     }
+// }
+
+// class Dog extends Animal {  // Dog inherits from Animal
+//     constructor(name, breed) {
+//         super(name);  // Call parent constructor
+//         this.breed = breed;
+//     }
+    
+//     speak() {  // Override parent method
+//         return `${this.name} barks!`;
+//     }
+    
+//     getBreed() {
+//         return `${this.name} is a ${this.breed}`;
+//     }
+// }
+
+// const dog = new Dog("Max", "Golden Retriever");
+// console.log(dog.speak());     // "Max barks!"
+// console.log(dog.getBreed());  // "Max is a Golden Retriever"
+
+
+/* ========================================
+   5. GETTERS AND SETTERS
+   ======================================== */
+
+/* 
+   What are Getters and Setters?
+   ------------------------------
+   Special methods to control how you access/modify object properties
+   - Getter: Read a property (get)
+   - Setter: Write/change a property (set)
+   - Used for validation, computed properties, encapsulation
+*/
+
+// Basic Getter and Setter
+// class Person {
+//     constructor(firstName, lastName) {
+//         this._firstName = firstName;  // _ means "private by convention"
+//         this._lastName = lastName;
+//     }
+    
+//     // GETTER - access like a property, not a function
+//     get fullName() {
+//         return `${this._firstName} ${this._lastName}`;
+//     }
+    
+//     // SETTER - set like a property, not a function
+//     set fullName(name) {
+//         const parts = name.split(' ');
+//         this._firstName = parts[0];
+//         this._lastName = parts[1];
+//     }
+    
+//     // Another getter
+//     get firstName() {
+//         return this._firstName;
+//     }
+    
+//     // Another setter with validation
+//     set firstName(name) {
+//         if (name.length < 2) {
+//             console.log("Name too short!");
+//             return;
+//         }
+//         this._firstName = name;
+//     }
+// }
+
+// const person = new Person("Alice", "Smith");
+
+// Using GETTER (no parentheses!)
+// console.log(person.fullName);  // "Alice Smith" - like a property!
+
+// Using SETTER (no parentheses!)
+// person.fullName = "Bob Johnson";  // like assigning to a property!
+// console.log(person.firstName);    // "Bob"
+
+// Validation in action
+// person.firstName = "A";  // "Name too short!"
+// person.firstName = "Alice";  // Works
+
+
+// Example 2: Computed property with getter
+// class Circle {
+//     constructor(radius) {
+//         this._radius = radius;
+//     }
+    
+//     // Getter for radius
+//     get radius() {
+//         return this._radius;
+//     }
+    
+//     // Setter for radius with validation
+//     set radius(value) {
+//         if (value <= 0) {
+//             console.log("Radius must be positive!");
+//             return;
+//         }
+//         this._radius = value;
+//     }
+    
+//     // Computed property - area (no setter, read-only)
+//     get area() {
+//         return Math.PI * this._radius ** 2;
+//     }
+    
+//     // Computed property - diameter
+//     get diameter() {
+//         return this._radius * 2;
+//     }
+// }
+
+// const circle = new Circle(5);
+// console.log(circle.radius);    // 5
+// console.log(circle.area);      // 78.54 (computed automatically!)
+// console.log(circle.diameter);  // 10
+
+// circle.radius = 10;
+// console.log(circle.area);      // 314.16 (automatically recalculated!)
+
+// circle.radius = -5;  // "Radius must be positive!"
+
+
+// Example 3: Temperature converter
+// class Temperature {
+//     constructor(celsius) {
+//         this._celsius = celsius;
+//     }
+    
+//     // Getter for Celsius
+//     get celsius() {
+//         return this._celsius;
+//     }
+    
+//     // Setter for Celsius
+//     set celsius(value) {
+//         this._celsius = value;
+//     }
+    
+//     // Getter for Fahrenheit (computed)
+//     get fahrenheit() {
+//         return (this._celsius * 9/5) + 32;
+//     }
+    
+//     // Setter for Fahrenheit (converts to Celsius)
+//     set fahrenheit(value) {
+//         this._celsius = (value - 32) * 5/9;
+//     }
+// }
+
+// const temp = new Temperature(25);
+// console.log(temp.celsius);     // 25
+// console.log(temp.fahrenheit);  // 77
+
+// temp.fahrenheit = 32;  // Set in Fahrenheit
+// console.log(temp.celsius);  // 0 (automatically converted!)
+
+
+/* 
+   Why use Getters and Setters?
+   -----------------------------
+   1. Validation - check values before setting
+   2. Computed properties - calculate values on the fly
+   3. Encapsulation - hide internal implementation
+   4. Read-only properties - getter without setter
+   5. Logging - track when properties are accessed/changed
+*/
+
+
+/* ========================================
+   6. IMPORT vs REQUIRE (ES6 MODULES vs COMMONJS)
+   ======================================== */
+
+/* 
+   Two Module Systems in JavaScript
+   ---------------------------------
+   1. CommonJS (require/module.exports) - Old way, used in Node.js
+   2. ES6 Modules (import/export) - Modern way, standard JavaScript
+*/
+
+/* 
+   COMMONJS (require/module.exports)
+   ---------------------------------
+   - Used in older Node.js code
+   - Synchronous loading
+   - Dynamic imports possible
+*/
+
+// Exporting with CommonJS (in math.js file):
+// function add(a, b) {
+//     return a + b;
+// }
+// function subtract(a, b) {
+//     return a - b;
+// }
+// module.exports = { add, subtract };  // CommonJS export
+
+// OR export individually:
+// module.exports.add = add;
+// module.exports.subtract = subtract;
+
+// Importing with CommonJS (in app.js file):
+// const math = require('./math');  // CommonJS import
+// console.log(math.add(5, 3));     // 8
+
+// OR destructure:
+// const { add, subtract } = require('./math');
+// console.log(add(5, 3));  // 8
+
+
+/* 
+   ES6 MODULES (import/export)
+   ---------------------------
+   - Modern standard way
+   - Better for browsers
+   - Asynchronous loading
+   - Static imports (analyzed before code runs)
+   - Must use .mjs extension or "type": "module" in package.json
+*/
+
+// Exporting with ES6 (in math.js file):
+// export function add(a, b) {
+//     return a + b;
+// }
+// export function subtract(a, b) {
+//     return a - b;
+// }
+
+// Importing with ES6 (in app.js file):
+// import { add, subtract } from './math.js';  // ES6 import
+// console.log(add(5, 3));  // 8
+
+
+/* 
+   KEY DIFFERENCES
+   ---------------
+   
+   Feature          | require (CommonJS)    | import (ES6)
+   -----------------|----------------------|------------------
+   Syntax           | const x = require()  | import x from
+   Loading          | Synchronous          | Asynchronous
+   When loaded      | Runtime (dynamic)    | Before runtime (static)
+   Browser support  | No (needs bundler)   | Yes (modern browsers)
+   Where to use     | Node.js (old)        | Modern JS, React, etc
+   File extension   | .js                  | .js or .mjs
+*/
+
+
+/* ========================================
+   7. EXPORT - Reuse Code Blocks
+   ======================================== */
+
+/* 
+   Named Exports (can export multiple things)
+   ------------------------------------------
+*/
+
+// Method 1: Export individually (in utils.js)
+// export const PI = 3.14159;
+// export function square(x) {
+//     return x * x;
+// }
+// export function cube(x) {
+//     return x * x * x;
+// }
+
+// Method 2: Export at the end (in utils.js)
+// const PI = 3.14159;
+// function square(x) {
+//     return x * x;
+// }
+// function cube(x) {
+//     return x * x * x;
+// }
+// export { PI, square, cube };
+
+// Method 3: Export with rename (in utils.js)
+// function square(x) {
+//     return x * x;
+// }
+// export { square as sq };  // export with different name
+
+
+/* 
+   Importing Named Exports
+   -----------------------
+*/
+
+// Import specific items (in app.js)
+// import { PI, square, cube } from './utils.js';
+// console.log(PI);        // 3.14159
+// console.log(square(5)); // 25
+
+// Import with rename
+// import { square as sq } from './utils.js';
+// console.log(sq(5));  // 25
+
+// Import all as an object
+// import * as utils from './utils.js';
+// console.log(utils.PI);        // 3.14159
+// console.log(utils.square(5)); // 25
+
+
+/* ========================================
+   8. IMPORT EVERYTHING FROM A FILE (*)
+   ======================================== */
+
+/* 
+   Import Everything with * (Namespace Import)
+   -------------------------------------------
+   Gets ALL exports from a file as one object
+*/
+
+// File: math.js
+// export const PI = 3.14159;
+// export function add(a, b) { return a + b; }
+// export function subtract(a, b) { return a - b; }
+// export function multiply(a, b) { return a * b; }
+
+// File: app.js
+// import * as math from './math.js';  // Import EVERYTHING
+
+// Now use with namespace:
+// console.log(math.PI);              // 3.14159
+// console.log(math.add(5, 3));       // 8
+// console.log(math.subtract(10, 4)); // 6
+// console.log(math.multiply(3, 7));  // 21
+
+/* 
+   When to use import *?
+   - When you need many exports from a file
+   - Keeps code organized with namespace
+   - Avoids naming conflicts
+*/
+
+
+/* ========================================
+   9. DEFAULT EXPORT & IMPORT
+   ======================================== */
+
+/* 
+   Default Export
+   --------------
+   One "main" export per file (can only have ONE default export)
+*/
+
+// File: User.js (exporting a class as default)
+// export default class User {
+//     constructor(name) {
+//         this.name = name;
+//     }
+//     greet() {
+//         return `Hello, I'm ${this.name}`;
+//     }
+// }
+
+// File: app.js (importing default export)
+// import User from './User.js';  // No curly braces for default!
+// const user = new User("Alice");
+// console.log(user.greet());  // "Hello, I'm Alice"
+
+
+// Example 2: Default export with function
+// File: calculator.js
+// export default function calculate(a, b, operation) {
+//     switch(operation) {
+//         case 'add': return a + b;
+//         case 'subtract': return a - b;
+//         default: return 0;
+//     }
+// }
+
+// File: app.js
+// import calculate from './calculator.js';  // Can name it anything!
+// console.log(calculate(5, 3, 'add'));  // 8
+
+// OR rename it:
+// import calc from './calculator.js';  // Different name, same thing!
+// console.log(calc(10, 5, 'subtract'));  // 5
+
+
+/* 
+   Mixing Default and Named Exports
+   ---------------------------------
+   You can have ONE default + multiple named exports
+*/
+
+// File: utils.js
+// export default function mainFunction() {
+//     return "Main function";
+// }
+// export const helper1 = () => "Helper 1";
+// export const helper2 = () => "Helper 2";
+
+// File: app.js
+// import mainFunction, { helper1, helper2 } from './utils.js';
+// console.log(mainFunction());  // "Main function"
+// console.log(helper1());       // "Helper 1"
+
+
+/* 
+   Export Fallback with Default Export
+   ------------------------------------
+   "Fallback" means the default thing to export when someone
+   imports without specifying what they want
+*/
+
+// File: config.js
+// const config = {
+//     apiUrl: "https://api.example.com",
+//     timeout: 5000,
+//     debug: true
+// };
+
+// Multiple named exports
+// export const API_URL = config.apiUrl;
+// export const TIMEOUT = config.timeout;
+
+// Default export (fallback - the whole config)
+// export default config;
+
+// File: app.js
+// Option 1: Import default (the fallback)
+// import config from './config.js';
+// console.log(config.apiUrl);  // "https://api.example.com"
+
+// Option 2: Import specific named exports
+// import { API_URL, TIMEOUT } from './config.js';
+// console.log(API_URL);  // "https://api.example.com"
+
+// Option 3: Import both
+// import config, { API_URL, TIMEOUT } from './config.js';
+
+
+/* ========================================
+   SUMMARY COMPARISON
+   ======================================== */
+
+/* 
+   NAMED EXPORT vs DEFAULT EXPORT
+   -------------------------------
+   
+   Named Export:
+   - Can have multiple per file
+   - Must use exact name when importing
+   - Use curly braces: import { x } from './file'
+   - Good for: utilities, multiple functions
+   
+   Default Export:
+   - Only ONE per file
+   - Can rename when importing
+   - No curly braces: import x from './file'
+   - Good for: main class, main function, config
+   
+   
+   Example combining everything:
+*/
+
+// File: User.js
+// Main class (default export)
+// export default class User {
+//     constructor(name, age) {
+//         this.name = name;
+//         this.age = age;
+//     }
+// }
+
+// Helper functions (named exports)
+// export function validateAge(age) {
+//     return age >= 18;
+// }
+
+// export function formatName(name) {
+//     return name.toUpperCase();
+// }
+
+// Constants (named exports)
+// export const MIN_AGE = 18;
+// export const MAX_AGE = 100;
+
+
+// File: app.js
+// Import default
+// import User from './User.js';
+
+// Import named exports
+// import { validateAge, formatName, MIN_AGE } from './User.js';
+
+// OR import everything at once
+// import User, { validateAge, formatName, MIN_AGE } from './User.js';
+
+// OR import all named exports as namespace
+// import User, * as userUtils from './User.js';
+
+// const user = new User("alice", 25);
+// console.log(userUtils.formatName(user.name));  // "ALICE"
+// console.log(userUtils.validateAge(user.age));  // true
+
+
+/* ========================================
+   QUICK REFERENCE CHEAT SHEET
+   ======================================== */
+
+/* 
+   EXPORTING:
+   ----------
+   export const x = 10;              // named export
+   export function fn() {}           // named export
+   export { x, fn };                 // named export (batch)
+   export { x as y };                // named export (renamed)
+   export default x;                 // default export
+   export default function() {}      // default export
+   
+   
+   IMPORTING:
+   ----------
+   import { x } from './file';       // named import
+   import { x as y } from './file';  // named import (renamed)
+   import * as all from './file';    // import all named
+   import x from './file';           // default import
+   import x, { y } from './file';    // default + named
+*/
